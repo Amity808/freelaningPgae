@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Gig Creation</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Create Your Selling Point</h1>
+    {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+        {% endfor %}
+    <form method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Gig Title</label>
+            <input type="text" class="form-control" required name="title" aria-describedby="title" placeholder="I will do">
+        </div>
+        <div class="mb-3">
+            <label for="search-tags" class="form-label">Gig Search Tags</label>
+            <input type="text" class="form-control" required name="search_tags" placeholder="Enter Your Search Tags">
+        </div>
+        <div class="mb-3">
+            <label for="gig_description" class="form-label">Gig Description</label>
+            <textarea class="form-control" required name="gig_description" placeholder="Enter Your Description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="gig_requirements" class="form-label">Gig Requirements</label>
+            <input type="text" class="form-control" required name="gig_requirements" placeholder="Enter Your Gig Requirements">
+        </div>
+        <div class="mb-3">
+            <label for="faq" class="form-label">Gig Faqs</label>
+            <textarea class="form-control" required name="faq" placeholder="Enter Your Gig faqs"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

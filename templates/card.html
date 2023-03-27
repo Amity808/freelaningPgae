@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+  <img src="{{ gig.gig_images }}" class="card-img-top" alt="...">
+  <div class="card-body border rounded border-warning">
+    <h5 class="card-title">{{ gig.title[:15] }}</h5>
+    <p class="card-text">{{ gig.search_tags[:15] }}</p>
+    <p class="card-text">{{ gig.gig_description[:25] }}</p>
+    <a href="/details/{{gig.id}}" class="btn btn-primary">View Gig</a>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Update Profile</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center">Update Profile</h1>
+    <div id="result" class="text-center"></div>
+  <form>
+            <div class="mb-3">
+                <label for="surname" class="form-label">Surname</label>
+                <input type="text" required class="form-control" name="surname" value="{{profile.surname}}" aria-describedby="surname"
+                       placeholder="Enter your Surname">
+            </div>
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Firstname</label>
+                <input type="text" required class="form-control" name="firstName" value="{{profile.firstName}}" aria-describedby="firstName"
+                       placeholder="Enter your Surname">
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Lastname</label>
+                <input type="text" required class="form-control" name="lastName" value="{{profile.lastName}}" aria-describedby="lastName"
+                       placeholder="Enter your Lastname">
+            </div>
+            <div class="mb-3">
+                <label for="phone_no" class="form-label">Phone No</label>
+                <input type="text" required class="form-control" name="phone_no" value="{{profile.phone_no}}" aria-describedby="phone_no"
+                       placeholder="Enter your Phone Number">
+            </div>
+            <div class="mb-3">
+                <label for="profileDescription" class="form-label">Profile Description</label>
+                <textarea required class="form-control" name="profileDescription"
+                          placeholder="Enter your Profile Description">{{profile.profileDescription}}</textarea>
+            </div>
+             <div class="mb-3">
+                <label for="school" class="form-label">School</label>
+                <input type="text" required class="form-control" name="school" value="{{profile.school}}" aria-describedby="school"
+                       placeholder="University of ..">
+            </div>
+            <div class="mb-3">
+                <label for="courseStudy" class="form-label">Course Study</label>
+                <input type="text" required class="form-control" name="courseStudy" value="{{profile.courseStudy}}" aria-describedby="courseStudy"
+                       placeholder="Art Education">
+            </div>
+           <div class="mb-3">
+                <label for="certificate" class="form-label">Certificate</label>
+                <input type="text" required class="form-control" name="certificate" value="{{profile.certificate}}" aria-describedby="certificate"
+                       placeholder="Master of English">
+            </div>
+            <div class="mb-3">
+                <label for="certificcateBy" class="form-label">Certificate</label>
+                <input type="text" required class="form-control" name="certifiedBy" value="{{profile.certifiedBy}}" aria-describedby="certifiedBy"
+                       placeholder="Certified By Udemy">
+            </div>
+            <div class="mb-3">
+                <label for="websiteUrl" class="form-label">Website Url</label>
+                <input type="text" required class="form-control" name="websiteUrl" value="{{profile.websiteUrl}}" aria-describedby="websiteUrl"
+                       placeholder="www.stayface.com">
+            </div>
+            <div class="mb-3">
+                <label for="statusM" class="form-label">Gender</label>
+                <input type="text" class="form-control" name="statusM" value="profile.statusM" aria-describedby="status"
+                       placeholder="Male Or Female">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="update_profile({{profile.id}})">Done</button>
+            <a href="/profile/{{profile.id}}" class="btn btn-primary" onclick="update_profile({{profile.id}})">Update</a>
+        </form>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        function update_profile(id) {
+        var data = {}
+        data["surname"] = document.getElementById("surname").value
+        data["firstName"] = document.getElementById("firstName").value
+        data["lastName"] = document.getElementById("lastName").value
+        data["phone_no"] = document.getElementById("phone_no").value
+        data["profileDescription"] = document.getElementById("profileDescription").value
+        data["school"] = document.getElementById("school").value
+        data["courseStudy"] = document.getElementById("courseStudy").value
+        data["certificate"] = document.getElementById("certificate").value
+        data["certifiedBy"] = document.getElementById("certifiedBy").value
+        data["websiteUrl"] = document.getElementById("websiteUrl").value
+        data["statusM"] = document.getElementById("statusM").value
+        fetch("/profile/updateprofile/"+id,
+        {method: 'PUT',
+        headers : {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)})
+        .then(response => response.json())
+        .then(data => document.getElementById("result").innerHTML = data.message)
+        }
+    </script>
+{% endblock %}

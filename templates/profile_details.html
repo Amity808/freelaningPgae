@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Profile</title>
+{% endblock %}
+
+{% block title %}
+<div class="container">
+  <h1 class="text-center">Profile Details</h1>
+      <img src="..." class="img-thumbnail" alt="...">
+
+
+      <div class="card text-center">
+      <div class="card-header">
+          <h3>My Profile</h3>
+     </div>
+      <div class="card-body">
+          <h5 class="card-title">Surname</h5>
+          <p class="card-text">{{ profile.surname }}</p>
+          <h5 class="card-title"> Firstname </h5>
+          <p class="card-text">{{ profile.firstName }}</p>
+          <h5 class="card-title"> Lastname </h5>
+          <p class="card-text">{{ profile.lastName }}</p>
+          <h5 class="card-title"> Phone Number</h5>
+          <p class="card-text">{{ profile.phone_no }}</p>
+          <h5 class="card-title">Profile Description</h5>
+          <p class="card-text">{{ profile.profileDescription }}</p>
+          <h5 class="card-title">School</h5>
+          <p class="card-text">{{ profile.school }}</p>
+          <h5 class="card-title">Course of Study</h5>
+          <p class="card-text">{{ profile.courseStudy }}</p>
+          <h5 class="card-title">Certificate Name</h5>
+          <p class="card-text">{{ profile.certificate }}</p>
+          <h5 class="card-title">Certificate By</h5>
+          <p class="card-text">{{ profile.certifiedBy }}</p>
+          <h5 class="card-title">Website Url</h5>
+          <p class="card-text">{{ profile.websiteUrl }}</p>
+          <h5 class="card-title">Gender</h5>
+          <p class="card-text">{{ profile.statusM }}</p>
+          <a href="/update-profile/{{profile.id}}" class="btn btn-primary">Update Profile</a>
+      </div>
+      <div class="card-footer text-muted">
+      2 days ago
+      </div>
+      </div>
+</div>
+{% endblock %}

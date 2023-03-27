@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Profile Creation</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Profile Registration</h1>
+    {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+        {% endfor %}
+<form method="post">
+            <div class="mb-3">
+                <label for="surname" class="form-label">Surname</label>
+                <input type="text" required class="form-control" name="surname" aria-describedby="surname"
+                       placeholder="Enter your Surname">
+            </div>
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Firstname</label>
+                <input type="text" required class="form-control" name="firstName" aria-describedby="firstName"
+                       placeholder="Enter your Surname">
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Lastname</label>
+                <input type="text" required class="form-control" name="lastName" aria-describedby="lastName"
+                       placeholder="Enter your Lastname">
+            </div>
+            <div class="mb-3">
+                <label for="phone_no" class="form-label">Phone No</label>
+                <input type="text" required class="form-control" name="phone_no" aria-describedby="phone_no"
+                       placeholder="Enter your Phone Number">
+            </div>
+            <div class="mb-3">
+                <label for="profileDescription" class="form-label">Profile Description</label>
+                <textarea required class="form-control" name="profileDescription"
+                          placeholder="Enter your Profile Description"></textarea>
+            </div>
+             <div class="mb-3">
+                <label for="school" class="form-label">School</label>
+                <input type="text" required class="form-control" name="school" aria-describedby="school"
+                       placeholder="University of ..">
+            </div>
+            <div class="mb-3">
+                <label for="courseStudy" class="form-label">Course Study</label>
+                <input type="text" required class="form-control" name="courseStudy" aria-describedby="courseStudy"
+                       placeholder="Art Education">
+            </div>
+           <div class="mb-3">
+                <label for="certificate" class="form-label">Certificate</label>
+                <input type="text" required class="form-control" name="certificate" aria-describedby="certificate"
+                       placeholder="Master of English">
+            </div>
+            <div class="mb-3">
+                <label for="certificcateBy" class="form-label">Certificate</label>
+                <input type="text" required class="form-control" name="certifiedBy" aria-describedby="certifiedBy"
+                       placeholder="Certified By Udemy">
+            </div>
+            <div class="mb-3">
+                <label for="websiteUrl" class="form-label">Website Url</label>
+                <input type="text" required class="form-control" name="websiteUrl" aria-describedby="websiteUrl"
+                       placeholder="www.stayface.com">
+            </div>
+            <div class="mb-3">
+                <label for="statusM" class="form-label">Gender</label>
+                <input type="text" class="form-control" name="statusM" aria-describedby="status"
+                       placeholder="Male Or Female">
+            </div>
+            <button type="submit" class="btn btn-primary">Done</button>
+        </form>
+</div>
+{% endblock %}

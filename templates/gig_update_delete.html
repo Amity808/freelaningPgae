@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Update and Delete Item</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h3 class="text-center">Update and Delete Gigs</h3>
+      {% for error in errors %}
+      <div class="alert alert-danger" role="alert">
+          {{error}}
+      </div>
+      {% endfor%}
+      <div id="result"></div>
+      {% for gig in gigs %}
+    <img src="..." class="img-thumbnail" alt="...">
+
+     <div class="container">
+      <div class="card text-center table-striped">
+      <div class="card-header">
+          <h3>{{ gig.title }}</h3>
+     </div>
+      <div class="card-body">
+        <h5 class="card-title">Gig Description</h5>
+        <p class="card-text">{{ gig.gig_description}}</p>
+        <h5 class="card-title"> Gig Tags </h5>
+        <p class="card-text">{{ gig.search_tags }}</p>
+        <h5 class="card-title"> Gig Requirements </h5>
+        <p class="card-text">{{ gig.gig_requirements }}</p>
+        <h5 class="card-title"> Gig Frequent Ask Question </h5>
+        <p class="card-text">{{ gig.faq }}</p>
+          <h5 class="card-title"> Username </h5>
+        <p class="card-text">{{ users.email }}</p>
+        <a href="#" class="btn btn-primary">Contact Seller</a>
+      </div>
+          <a href="/update-gig/{{gig.id}}" class="btn btn-primary">Edit</a>
+          <button type="submit" class="btn btn-danger" onclick="delete_gig({{gig.id}})">Delete Gig</button>
+      <div class="card-footer text-muted">
+      2 days ago
+      </div>
+      </div>
+    </div>
+      {% endfor %}
+  </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function delete_gig(id)
+    {
+        fetch("/gigs/delete-gig/"+ id, {method: "DELETE"})
+        .then(response => response.json())
+        .then(data => document.getElementById("result").innerHTML = data.message)
+    }
+</script>
+{% endblock %}

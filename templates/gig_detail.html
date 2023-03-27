@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Gig Details</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+      <h1>Gig Details</h1>
+      <img src="..." class="img-thumbnail" alt="..."/>
+
+     <div class="container">
+      <div class="card text-center">
+      <div class="card-header">
+          <h3>{{ gig.title }}</h3>
+     </div>
+      <div class="card-body">
+        <h5 class="card-title">Gig Description</h5>
+        <p class="card-text">{{ gig.gig_description}}</p>
+        <h5 class="card-title"> Gig Tags </h5>
+        <p class="card-text">{{ gig.search_tags }}</p>
+        <h5 class="card-title"> Gig Requirements </h5>
+        <p class="card-text">{{ gig.gig_requirements }}</p>
+        <h5 class="card-title"> Gig Frequent Ask Question </h5>
+        <p class="card-text">{{ gig.faq }}</p>
+          <h5 class="card-title"> Username </h5>
+        <p class="card-text">{{ user.email }}</p>
+        <a href="#" class="btn btn-primary">Contact Seller</a>
+      </div>
+          <button type="submit" class="btn btn-primary">Delete Gig</button>
+      <div class="card-footer text-muted">
+      2 days ago
+      </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

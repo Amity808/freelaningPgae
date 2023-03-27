@@ -1,0 +1,14 @@
+fastapi
+sqlalchemy
+alembic
+python-jose[cryptography]
+pydantic
+passlib[bcrypt]
+pillow
+black
+starlette
+python-dotenv
+pydantic[email]
+uvicorn
+python-multipart
+jinja2

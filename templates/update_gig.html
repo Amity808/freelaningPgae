@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Update Gig</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Update Gig</h1>
+    {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+        {% endfor %}
+    <div id="result" class="text-success"></div>
+    <form>
+        <div class="mb-3">
+            <label for="title" class="form-label">Gig Title</label>
+            <input type="text" class="form-control" id="title" required name="title" value="{{gigs.title}}" placeholder="I will do">
+        </div>
+        <div class="mb-3">
+            <label for="search_tags" class="form-label">Gig Search Tags</label>
+            <input type="text" class="form-control" id="search_tags" required name="search_tags" value="{{gigs.search_tags}}" placeholder="Enter Your Search Tags">
+        </div>
+        <div class="mb-3">
+            <label for="gig_description" class="form-label">Gig Description</label>
+            <textarea class="form-control" id="gig_description" required name="gig_description" placeholder="Enter Your Description">{{gigs.gig_description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="gig_requirements" class="form-label">Gig Requirements</label>
+            <input type="text" class="form-control" id="gig_requirements" required name="gig_requirements" value="{{gigs.gig_requirements}}" placeholder="Enter Your Gig Requirements">
+        </div>
+        <div class="mb-3">
+            <label for="faq" class="form-label">Gig Faqs</label>
+            <textarea class="form-control" id="faq" required name="faq" placeholder="Enter Your Gig faqs">{{gigs.faq}}</textarea>
+        </div>
+        <!--<button type="submit" class="btn btn-primary">Update</button>-->
+    </form>
+     <button type="submit" class="btn btn-primary" onclick="update_gig({{gigs.id}})">Update</button>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+    function update_gig(id) {
+    var data = {}
+    data["title"] = document.getElementById("title").value
+    data["search_tags"] = document.getElementById("search_tags").value
+    data["gig_description"] = document.getElementById("gig_description").value
+    data["gig_requirements"] = document.getElementById("gig_requirements").value
+    data["faq"] = document.getElementById("faq").value
+    fetch("/gigs/updateGig/"+id,
+    {method: 'PUT',
+    headers : {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)})
+    .then(response => response.json())
+    .then(data => document.getElementById("result").innerHTML = data.message)
+    }
+    </script>
+{% endblock %}
